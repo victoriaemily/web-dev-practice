@@ -4,6 +4,8 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const _ = require("lodash");
 const mongoose = require("mongoose")
+const encrypt = require("mongoose-encryption")
+
 
 const app = express();
 
@@ -16,12 +18,16 @@ app.use(bodyParser.urlencoded({
 mongoose.set('strictQuery', true);
 mongoose.connect("mongodb://127.0.0.1:27017/userDB"); 
 
-const userSchema = {
+const userSchema = new mongoose.Schema ({
     email: String,
     password: String
-};
+}); //obj - created from mongoose schema class
 
 const User = new mongoose.model("User", userSchema);
+
+const secret = "Thisisasecret!";
+
+userSchema.plugin(encrypt, {secret: secret, encryptedFields: ["password"]});
 
 
 app.get("/", function(req, res){
