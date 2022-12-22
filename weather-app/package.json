@@ -1,0 +1,15 @@
+{
+  "name": "weather-app",
+  "version": "1.0.0",
+  "description": "weather app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "victoria",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "https": "^1.0.0"
+  }
+}
