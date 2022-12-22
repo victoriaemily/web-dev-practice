@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
@@ -11,7 +12,7 @@ app.use(express.static("public"))
 app.set("view engine", "ejs")
 
 mongoose.set('strictQuery', true);
-mongoose.connect("mongodb+srv://victo:1234hello@cluster0.4s09kjd.mongodb.net/todolistDB"); //cpnnected to database
+mongoose.connect(process.env.MONGO_URL); //cpnnected to database
 const itemsSchema = {
     name: String
   };
